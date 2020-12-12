@@ -12,11 +12,10 @@ router.post('/api/burgers', (req, res) =>
   )
 );
 
-router.put('/api/burgers/:id', (req, res) => {
-  console.log(req.params);
+router.put('/api/burgers/:id', (req, res) =>
   burger.updateOne(req.params.id, 1, result =>
     result.changedRows ? res.status(200).end() : res.status(404).end()
-  );
-});
+  )
+);
 
 module.exports = router;
