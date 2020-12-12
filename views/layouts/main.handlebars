@@ -12,15 +12,15 @@
   {{{ body }}}
   <script>
     $(() => {
-      $(".devour-btn").on("click", function (event) {
-        const id = $(this).data("id");
+      $(".devour-btn").on("click", (e) => {
+        const id = $(e.target).data("id");
         $.ajax("/api/burgers/" + id, {
           type: "PUT",
         }).then(() => location.reload());
       });
 
-      $(".create-form").on("submit", (event) => {
-        event.preventDefault();
+      $(".create-form").on("submit", (e) => {
+        e.preventDefault();
         const burger_name = $("#ca").val().trim();
         $.ajax("/api/burgers", {
           type: "POST",
