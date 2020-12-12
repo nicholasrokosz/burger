@@ -18,7 +18,7 @@ const orm = {
   },
   updateOne(table, col1, val1, col2, val2, cb) {
     return connection.query(
-      "UPDATE ?? SET ??='?' WHERE ??='?'",
+      "UPDATE ?? SET ??='?' WHERE ??=?",
       [table, col1, val1, col2, val2],
       (err, res) => (err ? console.log(err) : cb(res))
     );

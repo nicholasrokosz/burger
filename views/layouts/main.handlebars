@@ -5,10 +5,30 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Eat Da Burger!</title>
+  <script src="https://code.jquery.com/jquery.js"></script>
 </head>
 
 <body>
   {{{ body }}}
+  <script>
+    $(() => {
+      $(".devour-btn").on("click", function (event) {
+        const id = $(this).data("id");
+        $.ajax("/api/burgers/" + id, {
+          type: "PUT",
+        }).then(() => location.reload());
+      });
+
+      $(".create-form").on("submit", (event) => {
+        event.preventDefault();
+        const burger_name = $("#ca").val().trim();
+        $.ajax("/api/burgers", {
+          type: "POST",
+          data: { burger_name },
+        }).then(() => location.reload());
+      });
+    })
+  </script>
 </body>
 
 </html>
